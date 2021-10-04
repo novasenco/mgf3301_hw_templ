@@ -1,0 +1,171 @@
+
+% latexmk -lualatex -file-line-error -synctex=1 -shell-escape hw_template.tex
+
+% preamble {{{1
+
+\documentclass[letter]{article}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\usepackage[en-GB]{datetime2}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{ragged2e}
+\usepackage{scalerel}
+\usepackage{calc}
+\usepackage{mdframed}
+\usepackage{emoji}
+\mdfdefinestyle{FullW}{%
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    userdefinedwidth=\textwidth}
+\usepackage{array}
+\newcolumntype{L}{>{$}l<{$}}
+
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\theoremstyle{definition}
+\newtheorem*{theorem}{Theorem}
+
+\usepackage{multicol}
+
+\makeatletter
+
+\newcommand*\wordpar[2]{{#1}\parbox[t]{\linewidth - \widthof{#1}}{#2}}
+
+\newcommand*\question[1]{%
+  \noindent\rule{\textwidth}{0.4pt}
+  \Large
+  \textbf{Question #1.} \\\vspace{-9pt}%
+  \noindent\rule{\textwidth}{0.4pt}\vspace{-20pt}
+}
+
+\makeatother
+
+% just for this example
+\newcommand*\tbs[0]{\textbackslash}
+% just for this example
+
+\title{Homework 0}
+\author{Dylan McClure}
+\date{\today}
+
+% }}}
+
+\begin{document}
+
+\begin{titlepage} % title page {{{1
+  \Large
+  \begin{flushright}
+    MGF--3301 \\
+    Fall 2021 \\
+    \DTMdisplaydate{2021}{9}{28}{-1}
+  \end{flushright}
+  \begin{center}
+    \vspace{0.4in} \textsc{\Huge Florida State University} \\
+    \vspace{0.4in} \includegraphics[scale=0.75]{fsu_logo.png} \\
+    \vspace{0.4in} \rule[0.2cm]{13cm}{0.1cm} \\ \vspace{0.4cm}
+    {\Huge \bfseries Homework 0} \\[0.4cm]
+    {\LARGE \bfseries Sundstrom Section 0.0}{\Large \quad \# 0, -1, -2} \\
+    {\LARGE \bfseries Sundstrom Section 0.1}{\Large \quad \# -$\infty$, $\infty$ } \\
+    \vspace{0.4in} \rule[0.2cm]{13cm}{0.1cm} \\
+    \vspace*{\fill}
+    Dylan McClure \emoji{rose}
+  \end{center}
+\end{titlepage} % }}}
+
+\section*{\textsection0.0}
+
+\question{0}
+
+\textbf{Proposition:} Tacos are tasty.
+
+\begin{proof}
+  Let's assume tacos are tasty. Therefore, $\exists t$ where $t$ is a taco, and
+  $$
+  \left( t^t \rightarrow \neg\frac{t}{\sqrt{t}} \right) \equiv \;\mathrm{tacos}.
+  $$
+  As such we have proved that tacos are tasty.
+\end{proof}
+
+\begin{enumerate}[nosep]
+
+  \item \begin{enumerate}[nosep,label=(\alph*)]
+      \item I also use this
+      \item for enumerations
+    \end{enumerate}
+
+  \item \begin{enumerate}[nosep,label=(\alph*)]
+    \item because it looks
+    \item pwetty
+  \end{enumerate}
+
+  \item \begin{enumerate}[nosep,label=(\alph*)]
+    \item and yes,
+    \item they're just snippets \emoji{eyes}
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{Math}
+
+\textbf{Inline Math Mode:} $ax = (b^2 + b)x$
+
+
+\textbf{Display Math Mode:}
+$$
+ax = (b^2 + b)x
+$$
+
+\textbf{Multi-line Display Math:}
+\begin{gather*}
+  ax = (b^2 + b)x \\
+     = b^2x + bx
+\end{gather*}
+
+\textbf{Align Parts (Multi-line):}
+\begin{align*}
+  ax &= (b^2 + b)x \\
+     &= b^2x + bx
+\end{align*}
+
+\textit{Note:} the \& aligns the equations.
+
+\textbf{Tables:}
+
+\begin{table}[H]
+  \center
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{col 1} & \textbf{col 2} & \textbf{col 3} \\ \hline\hline
+    How & I & Make \\ \hline
+    tables & \textit{woot} & \textit{woot} \\ \hline
+  \end{tabular}
+\end{table}
+
+\subsection*{Useful Symbols}
+
+\begin{table}[H]
+  \center
+  \begin{tabular}{r|l}
+    \texttt{\$\tbs forall x \tbs in \tbs mathds\{Z\}\$} & $\forall x \in \mathds{Z}$ \\
+    \texttt{\$\tbs exists x \tbs in \tbs mathds\{R\}\$} & $\exists x \in \mathds{R}$ \\
+    \texttt{\$p \tbs rightarrow q\$}                    & $p \rightarrow q$     \\
+    \texttt{\$p \tbs leftrightarrow q\$}                & $p \leftrightarrow q$ \\
+    \texttt{\$\tbs phi \tbs Rightarrow \tbs rho\$}      & $\phi\Rightarrow\rho$ \\
+    \texttt{\$\tbs left(x\^{}2\tbs right)\$}            & $\left(x^2\right)$    \\
+    \texttt{\$\tbs neg\$}                               & $\neg$                \\
+    \texttt{\$\tbs frac\{3\}\{4\}\$}                    & $\frac{3}{4}$         \\
+    \texttt{\$\tbs sqrt\{ab\}\$}                        & $\sqrt{ab}$           \\
+    \texttt{\$\tbs sqrt[3]\{ab\}\$}                     & $\sqrt[3]{ab}$        \\
+    \texttt{\$a \tbs wedge b\$}                         & $a \wedge b$          \\
+    \texttt{\$a \tbs vee b\$}                           & $a \vee b$            \\
+  \end{tabular}
+\end{table}
+
+\end{document}
+
